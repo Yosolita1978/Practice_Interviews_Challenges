@@ -34,7 +34,7 @@ def count_numbers(array, n):
     fractions.append(zeros_fraction)
     
     for num in fractions:
-        print '%6f' %(num)
+        print '%6f' % (num)
 
 if __name__ == "__main__":
     import doctest
