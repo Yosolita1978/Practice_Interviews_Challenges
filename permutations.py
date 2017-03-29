@@ -16,6 +16,7 @@ def check_permutation(string1, string2):
 
     return "".join(sorted(string1)) == "".join(sorted(string2))
 
+
 def write_permutation(lst):
     """ Return all the posibles permutations of a string with recursion """ 
 
