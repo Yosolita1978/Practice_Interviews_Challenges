@@ -46,6 +46,29 @@ If you receive a string with no brackets, consider it balanced::
 
 """
 
+class Stack(object):
+    """ This implements the Stack Class that we need to use"""
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def peek(self):
+        return self.items[-1]
+
+    def size(self):
+        return len(self.items)
+
+    def __str__(self):
+        return "%s" % (self.items,)
+
 
 def has_balanced_brackets(phrase):
     """Does a given string have balanced pairs of brackets?
@@ -53,6 +76,30 @@ def has_balanced_brackets(phrase):
     Given a string as input, return True or False depending on whether the
     string contains balanced (), {}, [], and/or <>.
     """
+
+    brackets_dic = {")": "(", "}": "{", "]": "[", ">": "<"}
+    tested = Stack()
+    open_brackets = set(brackets_dic.values())
+  
+    list_phrase = list(phrase)
+
+    for char in phrase:
+
+        if char in open_brackets:
+          tested.push(char)
+
+        elif char in brackets_dic:
+          if tested.isEmpty():
+            return False
+
+          elif tested.peek() == brackets_dic.get(char):
+            tested.pop()
+
+          else:
+            return False
+            
+
+    return tested.isEmpty()
 
 if __name__ == '__main__':
     import doctest
