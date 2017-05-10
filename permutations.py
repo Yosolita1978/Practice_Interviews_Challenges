@@ -1,3 +1,5 @@
+from itertools import permutations
+
 """Given two strings write a method to decide if one is a permutation of the other"""
 
 
@@ -17,6 +19,19 @@ def check_permutation(string1, string2):
     return "".join(sorted(string1)) == "".join(sorted(string2))
 
 
+def number_perms(obj):
+    "Find the number of permutations that a string have. I don't have to do the permutations, just find the number"
+    perm_set = set()
+    for item in permutations(str(obj)):
+        if item not in perm_set:
+            perm_set.add(item)
+    return len(perm_set)
+
+obj = "12345"
+print number_perms(obj)
+
+
+
 def write_permutation(lst):
     """ Return all the posibles permutations of a string with recursion """ 
 
@@ -33,9 +48,14 @@ def write_permutation(lst):
                 l.append([x] + option)
         return l
 
-data = list("123")
+#If I want to use that fuction to know how many numbers of permutations could be done in a string
+data = list("12345")
+perm = []
 for option in write_permutation(data):
-    print option
+    if option not in perm:
+        perm.append(option)
+number = len(perm)
+print number
 
 
 if __name__ == "__main__":
