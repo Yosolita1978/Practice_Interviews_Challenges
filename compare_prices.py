@@ -1,7 +1,17 @@
 """ Create a script that take a month price, an annual price and time of use, and tell you if the deal is a good deal or not"""
 
+from datetime import date
+from dateutil.relativedelta import relativedelta
+
+
+def final_time(number_months):
+    """Calculate and returns an especific date, acording with the number of months than receive as parameter"""
+
+    months = date.today() + relativedelta(months=+number_months)
+    return months
 
 def compare_prices(month, annual, time):
+    """Given a price by month, annual and and amount of time in months, determine if a deal is good or not"""
 
     full_month = month * 12
     full_annual = annual * 12
